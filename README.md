@@ -5,8 +5,10 @@ This repository is a collection of file converter scripts, to convert from X to 
 We anticipate to support the following file formats soon:
 
 * .npy to .zarr (as used, e.g., by the [ChipWhisperer](https://github.com/newaetech/chipwhisperer) project)
+   * assuming that plaintext/ciphertext/key/traces are separate .npy files
 * .ets/.h5 to .zarr (as used, e.g., by [SCARED](https://gitlab.com/eshard/scared) and [LASCAR](https://github.com/Ledger-Donjon/lascar))
 * .db to .zarr (as used, e.g., by [ot-sca](https://github.com/lowRISC/ot-sca/blob/master/capture/project_library/ot_trace_library/trace_library.py))
+   * the conversion supports XY tiles
 
 For the file conversion, please take the following general advice into consideration:
 
@@ -16,7 +18,7 @@ For the file conversion, please take the following general advice into considera
    * (u)int16 --> if this contains a 12 bit value, _please make sure it is LSB-aligned_, otherwise compression is not optimal
 * Chunking:
    * A chunking of (5000,1000) is suggested as a default value and will give you good performance for many real-world scenarios
-   * Depending on your sample rate, switching activity of your DUT, and access pattern, other values such as (5000, 500) could be better
+   * Depending on the sample rate, switching activity of DUT, file access pattern, other values such as (5000, 500) could be better
    * Zarr is currently being optimized for higher speed when rechunking, which in turn, will optimize this file conversion step
    * If file conversion speed matters to you, use (5000, x) whereas x = trace length, i.e., not chunking the 2nd dimension
    * When leaving the 2nd dimension unchunked, indexing will not be as fast
