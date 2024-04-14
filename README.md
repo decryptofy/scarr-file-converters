@@ -8,7 +8,8 @@ We anticipate to support the following file formats soon:
    * assuming that plaintext/ciphertext/key/traces are separate .npy files
 * .ets/.h5 to .zarr (as used, e.g., by [SCARED](https://gitlab.com/eshard/scared) and [LASCAR](https://github.com/Ledger-Donjon/lascar))
 * .db to .zarr (as used, e.g., by [ot-sca](https://github.com/lowRISC/ot-sca/blob/master/capture/project_library/ot_trace_library/trace_library.py))
-   * the conversion supports XY tiles
+   * a preliminary version of our script is now included [here](https://github.com/lowRISC/ot-sca/commit/2758a9f39e137d3ee94bcc68805b88405c726263)
+   * a seperate script will be hosted here to support legacy .db files from previous research activities (supporting XY tiles)
 
 For the file conversion, please take the following general advice into consideration:
 
